@@ -106,35 +106,20 @@ class MainActivity : AppCompatActivity() {
 
 
         categoryAdapter.setOnClickListener { selected ->
-            if (selected.name == "+") {
-                val createCategoryBottomSheet = CreateCategoryBottomSheet { categoryName ->
-                    val categoryEntity = CategoryEntity(
-                        name = categoryName,
-                        isSelected = false
-                    )
+            if (selected.name != "ALL") {
+                filterExpensesByCategoryName(selected.name)
 
-                    insertCategory(categoryEntity)
-                }
-                createCategoryBottomSheet.show(supportFragmentManager, "create_category")
-
+            } else {
 
                 val categoryTemp = categories.map { item ->
                     when {
-                        item.name == selected.name && item.isSelected -> item.copy(isSelected = true)
-
-                        item.name == selected.name && !item.isSelected -> item.copy(isSelected = true)
-                        item.name != selected.name && item.isSelected -> item.copy(isSelected = false)
-                        else -> item
+                        item.name == selected.name -> item.copy(isSelected = true)
+                        else -> item.copy(isSelected = false)
                     }
                 }
 
-                if (selected.name != "ALL") {
-                    filterExpensesByCategoryName(selected.name)
-                } else {
-                    GlobalScope.launch(Dispatchers.IO) {
-                        getExpensesFromDatabase()
-                    }
-
+                GlobalScope.launch(Dispatchers.IO) {
+                    getExpensesFromDatabase()
                 }
 
                 categoryAdapter.submitList(categoryTemp)
@@ -151,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 amount = expense.amount,
                 description = expense.description,
                 category = expense.category,
-                date = expense.date.toString(),
+                date = expense.date,
                 /*icon = expense.icon,
                 status = expense.status*/
             )
@@ -262,13 +247,6 @@ class MainActivity : AppCompatActivity() {
             )
         }
             .toMutableList()
-
-        categoriesUiData.add(
-            CategoryUiData(
-                name = "+",
-                isSelected = false
-            )
-        )
 
             val tempCategoryList = mutableListOf(
                     CategoryUiData(

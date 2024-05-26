@@ -166,7 +166,7 @@ class CreateOrUpdateExpenseBottomSheet(
             ViewGroup.LayoutParams.MATCH_PARENT
         )
 
-        // Configure BottomSheetBehavior to be fully expanded
+
         val bottomSheet = dialog?.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as? ViewGroup
         val behavior = bottomSheet?.let { BottomSheetBehavior.from(it) }
         if (behavior != null) {
