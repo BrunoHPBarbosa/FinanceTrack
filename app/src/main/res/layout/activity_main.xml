@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@drawable/background">
 
 
 
@@ -88,23 +89,24 @@
             app:layout_constraintTop_toTopOf="@+id/btn_add_category"
             app:layout_constraintVertical_bias="1.0" />
 
-        <TextView
-            android:layout_width="69dp"
-            android:layout_height="19dp"
-            android:layout_marginStart="21dp"
-            android:textAlignment="center"
-            android:text="Add Category"
-            android:textColor="@color/blue"
-            android:textSize="10sp"
-            android:layout_marginEnd="5dp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/textView7"
-            app:layout_constraintEnd_toEndOf="@+id/btn_add_category"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/btn_add_category"
-            app:layout_constraintStart_toStartOf="@+id/textView7"
-            app:layout_constraintTop_toTopOf="@+id/textView7"
-            app:layout_constraintVertical_bias="0.666" />
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="69dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="5dp"
+        android:text="Add Category"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toEndOf="@+id/btn_add_category"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/btn_add_category"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.666" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_categories"
@@ -174,16 +176,51 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.552" />
 
-    <Button
-        android:id="@+id/btn_home"
-        android:text="home"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/add_shape_list"
+        android:background="@drawable/shape_bottom_bar"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928"/>
+        app:layout_constraintVertical_bias="0.928">
+
+        <Button
+            android:gravity="center"
+            android:drawableLeft="@drawable/ic_home"
+            android:drawableTint="@color/white"
+            android:layout_marginStart="20dp"
+            android:id="@+id/btn_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/add_shape_list"
+            android:text="home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.172"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.928" />
+
+        <Button
+            android:gravity="center"
+            android:id="@+id/btn_list"
+            android:drawableTint="@color/white"
+            android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/add_shape_list"
+            android:text="list"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.172"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.928" />
+    </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
