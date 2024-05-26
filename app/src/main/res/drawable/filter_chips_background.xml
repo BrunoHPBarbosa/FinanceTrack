@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Selected state -->
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/gray" />
+            <corners android:radius="10dp" />
+        </shape>
+        <color android:color="@color/white"/>
+
+    </item>
+
+    <!-- Not selected state -->
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="10dp" />
+            <stroke android:width="2dp" android:color="@color/white" />
+        </shape>
+        <color android:color="@color/gray"/>
+    </item>
+</selector>
