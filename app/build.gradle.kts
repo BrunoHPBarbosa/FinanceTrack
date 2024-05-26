@@ -31,6 +31,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+    buildFeatures {
+        viewBinding = true
+    }
     kotlinOptions {
         jvmTarget = "1.8"
     }
@@ -39,6 +42,7 @@ android {
 dependencies {
 
     implementation(libs.androidx.recyclerview)
+    implementation(libs.mediation.test.suite)
     val room_version = "2.6.1"
 
     implementation("androidx.core:core-ktx:1.13.0")

@@ -20,6 +20,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
+        android:background="@drawable/add_shape_list"
         android:layout_height="wrap_content"
        android:layout_margin="8dp">
 

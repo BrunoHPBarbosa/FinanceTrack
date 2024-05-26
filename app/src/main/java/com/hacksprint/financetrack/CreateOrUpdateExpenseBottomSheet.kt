@@ -93,7 +93,7 @@ class CreateOrUpdateExpenseBottomSheet(
                 id: Long
             ) {
                 expenseCategory = categoryListTemp[position]
-                }
+            }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 showMessages("Category is required")

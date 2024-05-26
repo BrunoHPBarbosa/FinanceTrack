@@ -1,9 +1,11 @@
 package com.hacksprint.financetrack
 
+import android.content.Intent
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -12,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
+import com.google.android.ads.mediationtestsuite.activities.HomeActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -49,6 +52,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val btnHome = findViewById<Button>(R.id.btn_home)
+        btnHome.setOnClickListener {
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
+        }
+
+
         ctnContent = findViewById(R.id.ctn_content)
 
         val rvCategory = findViewById<RecyclerView>(R.id.rv_categories)
@@ -73,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             )
         }
 
-        fabCreateExpense.setOnClickListener {
+      fabCreateExpense.setOnClickListener {
              showCreateUpdateExpenseBottomSheet()
          }
 
@@ -217,6 +227,7 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch(Dispatchers.IO) {
             getCategoriesFromDatabase()
             getExpensesFromDatabase()
+
         }
 
     }
