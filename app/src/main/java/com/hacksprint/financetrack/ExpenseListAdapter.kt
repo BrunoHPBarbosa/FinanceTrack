@@ -3,6 +3,7 @@ package com.hacksprint.financetrack
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.net.ParseException
 import androidx.recyclerview.widget.DiffUtil
@@ -37,12 +38,14 @@ class ExpenseListAdapter :
         private val tvExpenseName: TextView = view.findViewById(R.id.tv_expense_name)
         private val tvValueAmount: TextView = view.findViewById(R.id.tv_value_amount)
         private val tvValueDate: TextView = view.findViewById(R.id.tv_value_date)
+        private val ivIcon: ImageView = view.findViewById(R.id.iv_category)
 
         fun bind(expense: ExpenseUiData, callBack: (ExpenseUiData) -> Unit) {
             tvCategoryName.text = expense.category
             tvExpenseName.text = expense.description
             tvValueAmount.text = expense.amount
             tvValueDate.text = formatDate(expense.date)
+            ivIcon.setImageResource(expense.iconResId)
 
             view.setOnClickListener {
                 callBack.invoke(expense)
@@ -71,6 +74,7 @@ class ExpenseListAdapter :
                 && oldItem.category == newItem.category
                 && oldItem.date == newItem.date
                 && oldItem.description == newItem.description
+                && oldItem.iconResId == newItem.iconResId
         }
     }
 }

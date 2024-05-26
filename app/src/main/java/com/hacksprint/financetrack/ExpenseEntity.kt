@@ -19,5 +19,6 @@ data class ExpenseEntity(
     val category: String,
     val amount: String,
     val date: String,
-    val description: String
+    val description: String,
+    val iconResId: Int
 )
