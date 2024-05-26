@@ -84,7 +84,7 @@ class MainActivity : AppCompatActivity() {
 
 
         categoryAdapter.setOnLongClickListener { categoryToBeDeleted ->
-            if(categoryToBeDeleted.name != "+" && categoryToBeDeleted.name != "ALL") {
+            if(categoryToBeDeleted.name != "ALL") {
                 val title = this.getString(R.string.category_delete_title)
                 val message = this.getString(R.string.category_delete_message)
                 val btnAction = this.getString(R.string.delete)
