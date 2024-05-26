@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             applicationContext,
             FinanceTrackDataBase::class.java,
             "finance_track_db"
-        ).build()
+        ).fallbackToDestructiveMigration().build()
     }
 
     private val categoryDao by lazy {
@@ -149,6 +149,7 @@ class MainActivity : AppCompatActivity() {
                 description = expense.description,
                 category = expense.category,
                 date = expense.date,
+                iconResId = expense.iconResId,
                 /*icon = expense.icon,
                 status = expense.status*/
             )
@@ -285,6 +286,7 @@ class MainActivity : AppCompatActivity() {
                 category = it.category,
                 description = it.description,
                 date = it.date,
+                iconResId = it.iconResId,
                 /*icon = it.icon,
                 status = it.status*/
             )
@@ -351,6 +353,7 @@ class MainActivity : AppCompatActivity() {
                     category = it.category,
                     description = it.description,
                     date = it.date,
+                    iconResId = it.iconResId,
                     /*icon = it.icon,
                     status = it.status*/
                 )
@@ -373,6 +376,7 @@ class MainActivity : AppCompatActivity() {
                     category = expenseToBeCreated.category,
                     description = expenseToBeCreated.description,
                     date = expenseToBeCreated.date,
+                    iconResId = expenseToBeCreated.iconResId,
                     /*icon = R.drawable.ic_home,
                     status = R.drawable.baseline_circle_green_24*/
 
@@ -387,6 +391,7 @@ class MainActivity : AppCompatActivity() {
                     category = expenseToBeUpdated.category,
                     description = expenseToBeUpdated.description,
                     date = expenseToBeUpdated.date,
+                    iconResId = expenseToBeUpdated.iconResId,
                     /*icon = R.drawable.ic_home,
                     status = R.drawable.baseline_circle_green_24*/
                 )
