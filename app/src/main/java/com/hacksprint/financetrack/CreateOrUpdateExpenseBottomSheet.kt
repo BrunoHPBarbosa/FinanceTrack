@@ -45,8 +45,7 @@ class CreateOrUpdateExpenseBottomSheet(
             R.drawable.baseline_local_airport_24,
             R.drawable.baseline_electric_bolt_24,
             R.drawable.baseline_directions_car_24,
-            R.drawable.baseline_credit_card_24,
-            R.drawable.baseline_bar_chart_24
+            R.drawable.baseline_credit_card_24
         )
         val listIconsAdapter = ListIconsAdapter(icons, this) // Passa esta classe como ouvinte de clique de ícone
         recyclerViewIcons.adapter = listIconsAdapter
@@ -94,7 +93,7 @@ class CreateOrUpdateExpenseBottomSheet(
                 id: Long
             ) {
                 expenseCategory = categoryListTemp[position]
-                }
+            }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 showMessages("Category is required")
@@ -123,28 +122,42 @@ class CreateOrUpdateExpenseBottomSheet(
             val date = edtExpenseDate.text.toString().trim()
             if(expenseCategory != "Select a category" && name.isNotEmpty()) {
 
+                val expenseUiData = ExpenseUiData(
+                    id = expense?.id ?: 0,
+                    description = name,
+                    amount = amount,
+                    date = date,
+                    category = requireNotNull(expenseCategory),
+                    iconResId = listIconsAdapter.selectedIconPosition ?: 0
+                    /*iconResId = listIconsAdapter.updateSelectedIconPosition(
+                        listIconsAdapter.selectedIconPosition
+                    ).toString()*/
+                )
+
                 if (expense == null) {
-                    onCreateClicked.invoke(
-                        ExpenseUiData(
+                    onCreateClicked.invoke( expenseUiData
+                        /*ExpenseUiData(
                             id = 0,
                             description = name,
                             amount = amount,
                             date = date,
-                            category = requireNotNull(expenseCategory)
-                        )
+                            category = requireNotNull(expenseCategory),
+                            iconResId = iconResId
+                        )*/
                     )
                     dismiss()
                     showMessages("Expense created")
 
                 } else {
-                    onUpdateClicked.invoke(
-                        ExpenseUiData(
+                    onUpdateClicked.invoke(expenseUiData
+                        /*ExpenseUiData(
                             id = expense.id,
                             description = name,
                             amount = amount,
                             date = date,
-                            category = requireNotNull(expenseCategory)
-                        )
+                            category = requireNotNull(expenseCategory),
+                            iconResId = iconResId
+                        )*/
                     )
                     dismiss()
                     showMessages("Expense updated")
@@ -152,7 +165,6 @@ class CreateOrUpdateExpenseBottomSheet(
             } else {
                 showMessages("Fields are required")
             }
-
         }
 
         return view
@@ -166,7 +178,6 @@ class CreateOrUpdateExpenseBottomSheet(
             ViewGroup.LayoutParams.MATCH_PARENT
         )
 
-        // Configure BottomSheetBehavior to be fully expanded
         val bottomSheet = dialog?.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as? ViewGroup
         val behavior = bottomSheet?.let { BottomSheetBehavior.from(it) }
         if (behavior != null) {

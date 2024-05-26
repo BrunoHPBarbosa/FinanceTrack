@@ -14,15 +14,13 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.ads.mediationtestsuite.activities.HomeActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
-    companion object {
-        var expenses: List<ExpenseUiData> = listOf()
-    }
+
     private var categories = listOf<CategoryUiData>()
     private var expenses = listOf<ExpenseUiData>()
     private var categoriesEntity = listOf<CategoryEntity>()
