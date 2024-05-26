@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
 
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btn_add_expense"
         android:layout_width="110dp"
@@ -134,7 +135,7 @@
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/card_recycler_list" />
 
-   
+
 
     <LinearLayout
         android:id="@+id/ctn_content"
@@ -173,4 +174,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.552" />
 
+    <Button
+        android:id="@+id/btn_home"
+        android:text="home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/add_shape_list"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.928"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
