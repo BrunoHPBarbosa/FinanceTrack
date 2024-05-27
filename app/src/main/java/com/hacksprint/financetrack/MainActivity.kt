@@ -96,8 +96,6 @@ class MainActivity : AppCompatActivity() {
             showCreateUpdateExpenseBottomSheet(expense)
         }
 
-
-
         categoryAdapter.setOnLongClickListener { categoryToBeDeleted ->
             if(categoryToBeDeleted.name != "ALL") {
                 val title = this.getString(R.string.category_delete_title)
@@ -139,9 +137,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-
-
 
         rvCategory.adapter = categoryAdapter
         rvExpense.adapter = expenseAdapter

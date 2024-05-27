@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.hacksprint.financetrack.R
 
 class CategoryListAdapter :
     ListAdapter<CategoryUiData, CategoryListAdapter.CategoryViewHolder>(diffCallback())  {
@@ -23,7 +22,6 @@ class CategoryListAdapter :
         this.onLongClick = onLongClick
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_category, parent, false)
@@ -34,8 +32,6 @@ class CategoryListAdapter :
         val category = getItem(position)
         holder.bind(category, onClick, onLongClick)
     }
-
-
 
     class CategoryViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         private val tvCategory = view.findViewById<TextView>(R.id.tv_category)
