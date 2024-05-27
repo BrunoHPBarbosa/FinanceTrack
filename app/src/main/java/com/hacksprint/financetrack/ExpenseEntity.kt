@@ -20,5 +20,6 @@ data class ExpenseEntity(
     val amount: String,
     val date: String,
     val description: String,
-    val iconResId: Int
+    val iconResId: Int,
+    val dueDate: String
 )

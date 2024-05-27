@@ -149,8 +149,8 @@ class MainActivity : AppCompatActivity() {
                 category = expense.category,
                 date = expense.date,
                 iconResId = expense.iconResId,
-                /*icon = expense.icon,
-                status = expense.status*/
+                dueDate = expense.dueDate
+
             )
             deleteExpense(expenseEntityToBeDeleted)
             Toast.makeText(this, "Expense deleted", Toast.LENGTH_SHORT).show()
@@ -286,8 +286,7 @@ class MainActivity : AppCompatActivity() {
                 description = it.description,
                 date = it.date,
                 iconResId = it.iconResId,
-                /*icon = it.icon,
-                status = it.status*/
+                dueDate = it.dueDate
             )
         }
 
@@ -353,8 +352,7 @@ class MainActivity : AppCompatActivity() {
                     description = it.description,
                     date = it.date,
                     iconResId = it.iconResId,
-                    /*icon = it.icon,
-                    status = it.status*/
+                    dueDate = it.dueDate
                 )
             }
 
@@ -376,8 +374,7 @@ class MainActivity : AppCompatActivity() {
                     description = expenseToBeCreated.description,
                     date = expenseToBeCreated.date,
                     iconResId = expenseToBeCreated.iconResId,
-                    /*icon = R.drawable.ic_home,
-                    status = R.drawable.baseline_circle_green_24*/
+                    dueDate = expenseToBeCreated.dueDate
 
                 )
                 insertExpense(expenseEntityToBeInserted)
@@ -391,8 +388,8 @@ class MainActivity : AppCompatActivity() {
                     description = expenseToBeUpdated.description,
                     date = expenseToBeUpdated.date,
                     iconResId = expenseToBeUpdated.iconResId,
-                    /*icon = R.drawable.ic_home,
-                    status = R.drawable.baseline_circle_green_24*/
+                    dueDate = expenseToBeUpdated.dueDate
+
                 )
                 updateExpense(expenseEntityToBeUpdated)
             },

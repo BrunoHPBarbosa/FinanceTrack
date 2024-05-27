@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
+import java.util.Date
 import java.util.Locale
 
 class ExpenseListAdapter :
@@ -39,6 +40,7 @@ class ExpenseListAdapter :
         private val tvValueAmount: TextView = view.findViewById(R.id.tv_value_amount)
         private val tvValueDate: TextView = view.findViewById(R.id.tv_value_date)
         private val ivIcon: ImageView = view.findViewById(R.id.iv_category)
+        private val ivStatus: ImageView = view.findViewById(R.id.iv_status)
 
         fun bind(expense: ExpenseUiData, callBack: (ExpenseUiData) -> Unit) {
             tvCategoryName.text = expense.category
@@ -46,6 +48,16 @@ class ExpenseListAdapter :
             tvValueAmount.text = expense.amount
             tvValueDate.text = formatDate(expense.date)
             ivIcon.setImageResource(expense.iconResId)
+
+            val dueDate = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).parse(expense.date)
+            val currentDate = Date()
+            if (dueDate != null) {
+                if (dueDate.before(currentDate)) {
+                    ivStatus.setImageResource(R.drawable.baseline_circle_red_24)
+                } else {
+                    ivStatus.setImageResource(R.drawable.baseline_circle_green_24)
+                }
+            }
 
             view.setOnClickListener {
                 callBack.invoke(expense)

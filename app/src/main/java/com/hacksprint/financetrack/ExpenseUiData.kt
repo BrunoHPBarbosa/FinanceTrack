@@ -9,5 +9,6 @@ data class ExpenseUiData(
     val amount: String,
     val category: String,
     val date: String,
-    @DrawableRes val iconResId: Int
+    @DrawableRes val iconResId: Int,
+    val dueDate: String
 )
