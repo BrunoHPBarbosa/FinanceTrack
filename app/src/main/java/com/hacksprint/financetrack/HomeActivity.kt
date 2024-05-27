@@ -21,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         }
 
         val recyclerViewHome: RecyclerView = findViewById(R.id.rv_home)
-
+       
 
         val firstFourExpenses = MainActivity.expenses.take(4)
 
