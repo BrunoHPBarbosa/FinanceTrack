@@ -121,7 +121,10 @@ class CreateOrUpdateExpenseBottomSheet(
             val name = edtExpenseName.text.toString().trim()
             val amount = edtExpenseAmount.text.toString().trim()
             val date = edtExpenseDate.text.toString().trim()
-            if(expenseCategory != "Select a category" && name.isNotEmpty()) {
+
+            if(expenseCategory != "Select a category" && name.isNotEmpty()
+                && amount.isNotEmpty()
+                && date.isNotEmpty()) {
 
                 val iconResId = listIconsAdapter.selectedIconPosition
                 if (iconResId != null && iconResId < icons.size) {
@@ -131,7 +134,8 @@ class CreateOrUpdateExpenseBottomSheet(
                         amount = amount,
                         date = date,
                         category = requireNotNull(expenseCategory),
-                        iconResId = icons[iconResId]
+                        iconResId = icons[iconResId],
+                        dueDate = date
 
                     )
 
@@ -149,6 +153,7 @@ class CreateOrUpdateExpenseBottomSheet(
                     }
 
                 } else {
+
                     showMessages("Fields are required")
                 }
             }

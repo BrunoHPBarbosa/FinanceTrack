@@ -195,7 +195,7 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_margin="24dp"
-            android:text="Add a new task"
+            android:text="Add a new category"
             android:textColor="@color/black"
             android:textSize="28sp"
             android:textStyle="bold"/>
