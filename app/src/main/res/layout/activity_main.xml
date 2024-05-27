@@ -7,7 +7,21 @@
     tools:context=".MainActivity"
     android:background="@drawable/background">
 
-
+    <TextView
+        android:id="@+id/set_name_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FinanceTrack"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rv_categories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/rv_categories"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
 
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/btn_add_expense"
@@ -18,9 +32,9 @@
         android:clickable="true"
         app:backgroundTint="#CCD9F6"
         app:layout_constraintBottom_toTopOf="@+id/rv_categories"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.652"
-        app:layout_constraintStart_toEndOf="@+id/btn_add_category"
+        app:layout_constraintEnd_toEndOf="@+id/rv_categories"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/rv_categories"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -59,53 +73,31 @@
         app:layout_constraintTop_toTopOf="@+id/btn_add_expense"
         app:layout_constraintVertical_bias="0.0" />
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/btn_add_category"
-        android:layout_width="110dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="40dp"
-        android:background="@drawable/add_shape_list"
-        android:clickable="true"
-        app:backgroundTint="#CCD9F6"
+    <TextView
+        android:id="@+id/textadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Categories"
+        android:textColor="@color/black"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/rv_categories"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/set_name_text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/rv_categories"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.413" />
-
-        <TextView
-            android:id="@+id/textView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:textColor="@color/blue"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_add_category"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.043"
-            app:layout_constraintStart_toStartOf="@+id/btn_add_category"
-            app:layout_constraintTop_toTopOf="@+id/btn_add_category"
-            app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/set_name_text"
+        app:layout_constraintVertical_bias="0.771" />
 
     <TextView
-        android:id="@+id/textView6"
-        android:layout_width="69dp"
-        android:layout_height="19dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="5dp"
-        android:text="Add Category"
-        android:textAlignment="center"
-        android:textColor="@color/blue"
-        android:textSize="10sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Expenses"
+        android:textColor="@color/black"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="@+id/btn_add_category"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_add_category"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintBottom_toTopOf="@+id/rv_expenses"
+        app:layout_constraintEnd_toEndOf="@+id/rv_categories"
+        app:layout_constraintHorizontal_bias="0.013"
+        app:layout_constraintStart_toStartOf="@+id/rv_categories"
+        app:layout_constraintTop_toBottomOf="@+id/rv_categories"
         app:layout_constraintVertical_bias="0.666" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -113,31 +105,76 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="116dp"
         android:layout_marginEnd="50dp"
         android:background="@drawable/background_category"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_category" />
 
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_expenses"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_height="520dp"
+        android:layout_marginTop="40dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rv_categories"
         app:layout_constraintVertical_bias="0.0"
         tools:listitem="@layout/card_recycler_list" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/btn_add_category"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:background="@drawable/rect"
+        android:clickable="true"
 
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rv_expenses"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.805" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="+"
+        android:textColor="@color/blue"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_category"
+        app:layout_constraintEnd_toEndOf="@+id/btn_add_category"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_category"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_category"
+        app:layout_constraintVertical_bias="0.20" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Add Categoria"
+        android:textColor="@color/blue"
+        android:textSize="8sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_add_category"
+        app:layout_constraintEnd_toEndOf="@+id/btn_add_category"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@+id/btn_add_category"
+        app:layout_constraintTop_toTopOf="@+id/btn_add_category"
+        app:layout_constraintVertical_bias="0.80" />
 
     <LinearLayout
         android:id="@+id/ctn_content"
@@ -177,28 +214,29 @@
         app:layout_constraintVertical_bias="0.552" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_bottom_bar"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928">
+        app:layout_constraintVertical_bias="0.936">
 
         <Button
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_home"
-            android:drawableTint="@color/white"
-            android:layout_marginStart="20dp"
             android:id="@+id/btn_home"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:background="@drawable/add_shape_list"
+            android:drawableLeft="@drawable/ic_home"
+            android:drawableTint="@color/white"
+            android:gravity="center"
             android:text="home"
+            android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.172"
@@ -207,14 +245,14 @@
             app:layout_constraintVertical_bias="0.928" />
 
         <Button
-            android:gravity="center"
             android:id="@+id/btn_list"
-            android:drawableTint="@color/white"
-            android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:background="@drawable/add_shape_list"
+            android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
+            android:drawableTint="@color/white"
+            android:gravity="center"
             android:text="list"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
