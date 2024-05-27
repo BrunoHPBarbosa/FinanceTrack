@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!-- Selected state -->
     <item android:state_selected="true"
-        android:color="@android:color/white" />
+        android:color="@color/blue" />
     <!-- Not selected state -->
     <item android:color="@color/blue" />
 
