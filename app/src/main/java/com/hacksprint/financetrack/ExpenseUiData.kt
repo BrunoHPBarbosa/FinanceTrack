@@ -1,5 +1,7 @@
 package com.hacksprint.financetrack
 
+import androidx.annotation.DrawableRes
+
 
 data class ExpenseUiData(
     val id: Int,
@@ -7,5 +9,5 @@ data class ExpenseUiData(
     val amount: String,
     val category: String,
     val date: String,
-    val iconResId: Int
+    @DrawableRes val iconResId: Int
 )

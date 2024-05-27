@@ -26,8 +26,7 @@
             android:layout_height="25dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="15dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_home" />
+            android:contentDescription="@null" />
 
         <TextView
             android:id="@+id/tv_category_name"

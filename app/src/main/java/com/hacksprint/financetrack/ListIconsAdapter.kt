@@ -11,12 +11,13 @@ class ListIconsAdapter(
     private val iconClickListener: IconClickListener
 ) : RecyclerView.Adapter<ListIconsAdapter.IconViewHolder>() {
 
-    var selectedIconPosition: Int? = null
+    var selectedIconPosition: Int = 0
 
-    /*fun updateSelectedIconPosition(position: Int?) {
+    fun updateSelectedIconPosition(position: Int) {
         selectedIconPosition = position
         notifyDataSetChanged()
-    }*/
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IconViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.icon_selection_style, parent, false)
@@ -32,19 +33,16 @@ class ListIconsAdapter(
         holder.itemView.setOnClickListener {
             val previousSelectedPosition = selectedIconPosition
             selectedIconPosition = holder.adapterPosition
-            notifyItemChanged(previousSelectedPosition?: -1)
+            notifyItemChanged(previousSelectedPosition)
+            notifyItemChanged(this.selectedIconPosition)
 
             iconClickListener.onIconClicked(icon)
+
         }
     }
 
     override fun getItemCount(): Int {
         return icons.size
-    }
-
-    fun updateSelectedIconPosition(position: Int?) {
-        selectedIconPosition = position
-        notifyDataSetChanged()
     }
 
     inner class IconViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -55,4 +53,7 @@ class ListIconsAdapter(
     interface IconClickListener {
         fun onIconClicked(iconResId: Int)
     }
+
+
+
 }
