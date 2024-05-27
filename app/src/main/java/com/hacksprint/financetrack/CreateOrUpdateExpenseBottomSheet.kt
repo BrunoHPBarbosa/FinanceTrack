@@ -27,6 +27,19 @@ class CreateOrUpdateExpenseBottomSheet(
     private val onDeleteClicked: (ExpenseUiData) -> Unit
 ) : BottomSheetDialogFragment(), ListIconsAdapter.IconClickListener {
 
+    private var icons = listOf(
+        R.drawable.ic_home,
+        R.drawable.baseline_wifi_24,
+        R.drawable.baseline_water_drop_24,
+        R.drawable.baseline_videogame_asset_24,
+        R.drawable.baseline_shopping_cart_24,
+        R.drawable.baseline_local_gas_station_24,
+        R.drawable.baseline_local_airport_24,
+        R.drawable.baseline_electric_bolt_24,
+        R.drawable.baseline_directions_car_24,
+        R.drawable.baseline_credit_card_24
+    )
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -35,18 +48,7 @@ class CreateOrUpdateExpenseBottomSheet(
         val view = inflater.inflate(R.layout.create_or_update_expense_bottom_sheet, container, false)
 
         val recyclerViewIcons = view.findViewById<RecyclerView>(R.id.recyclerListIcons)
-        val icons = listOf(
-            R.drawable.ic_home,
-            R.drawable.baseline_wifi_24,
-            R.drawable.baseline_water_drop_24,
-            R.drawable.baseline_videogame_asset_24,
-            R.drawable.baseline_shopping_cart_24,
-            R.drawable.baseline_local_gas_station_24,
-            R.drawable.baseline_local_airport_24,
-            R.drawable.baseline_electric_bolt_24,
-            R.drawable.baseline_directions_car_24,
-            R.drawable.baseline_credit_card_24
-        )
+
         val listIconsAdapter = ListIconsAdapter(icons, this) // Passa esta classe como ouvinte de clique de ícone
         recyclerViewIcons.adapter = listIconsAdapter
         recyclerViewIcons.layoutManager = GridLayoutManager(context, 5)
@@ -122,48 +124,51 @@ class CreateOrUpdateExpenseBottomSheet(
             val date = edtExpenseDate.text.toString().trim()
             if(expenseCategory != "Select a category" && name.isNotEmpty()) {
 
-                val expenseUiData = ExpenseUiData(
-                    id = expense?.id ?: 0,
-                    description = name,
-                    amount = amount,
-                    date = date,
-                    category = requireNotNull(expenseCategory),
-                    iconResId = listIconsAdapter.selectedIconPosition ?: 0
-                    /*iconResId = listIconsAdapter.updateSelectedIconPosition(
-                        listIconsAdapter.selectedIconPosition
-                    ).toString()*/
-                )
-
-                if (expense == null) {
-                    onCreateClicked.invoke( expenseUiData
-                        /*ExpenseUiData(
-                            id = 0,
-                            description = name,
-                            amount = amount,
-                            date = date,
-                            category = requireNotNull(expenseCategory),
-                            iconResId = iconResId
-                        )*/
+                val iconResId = listIconsAdapter.selectedIconPosition
+                if (iconResId != null && iconResId < icons.size) {
+                    val expenseUiData = ExpenseUiData(
+                        id = expense?.id ?: 0,
+                        description = name,
+                        amount = amount,
+                        date = date,
+                        category = requireNotNull(expenseCategory),
+                        iconResId = icons[iconResId]
+                        /*iconResId = listIconsAdapter.updateSelectedIconPosition(
+                            listIconsAdapter.selectedIconPosition
+                        ).toString()*/
                     )
-                    dismiss()
-                    showMessages("Expense created")
 
+                    if (expense == null) {
+                        onCreateClicked.invoke( expenseUiData
+                            /*ExpenseUiData(
+                                id = 0,
+                                description = name,
+                                amount = amount,
+                                date = date,
+                                category = requireNotNull(expenseCategory),
+                                iconResId = iconResId
+                            )*/
+                        )
+                        dismiss()
+                        showMessages("Expense created")
+
+                    } else {
+                        onUpdateClicked.invoke(expenseUiData
+                            /*ExpenseUiData(
+                                id = expense.id,
+                                description = name,
+                                amount = amount,
+                                date = date,
+                                category = requireNotNull(expenseCategory),
+                                iconResId = iconResId
+                            )*/
+                        )
+                        dismiss()
+                        showMessages("Expense updated")
+                    }
                 } else {
-                    onUpdateClicked.invoke(expenseUiData
-                        /*ExpenseUiData(
-                            id = expense.id,
-                            description = name,
-                            amount = amount,
-                            date = date,
-                            category = requireNotNull(expenseCategory),
-                            iconResId = iconResId
-                        )*/
-                    )
-                    dismiss()
-                    showMessages("Expense updated")
+                    showMessages("Fields are required")
                 }
-            } else {
-                showMessages("Fields are required")
             }
         }
 
@@ -193,7 +198,7 @@ class CreateOrUpdateExpenseBottomSheet(
     }
 
     override fun onIconClicked(iconResId: Int) {
-        view?.findViewById<ImageView>(R.id.iv_category)?.setImageResource(iconResId)
-
+        val listIconsAdapter = ListIconsAdapter(icons = icons, this)
+        listIconsAdapter.updateSelectedIconPosition(iconResId)
     }
 }
