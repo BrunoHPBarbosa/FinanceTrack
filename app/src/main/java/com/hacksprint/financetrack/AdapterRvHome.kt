@@ -29,7 +29,7 @@ class AdapterRvHome(private val itemList: List<ExpenseUiData>) : RecyclerView.Ad
         }
     }
     override fun getItemCount(): Int {
-        return max(4,itemList.size)
+        return max(6,itemList.size)
     }
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
