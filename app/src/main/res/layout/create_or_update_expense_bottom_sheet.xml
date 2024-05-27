@@ -147,6 +147,7 @@
         android:text="Create"
         android:textColor="@color/white"
         android:textSize="16sp"
+        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/recyclerListIcons"
         app:layout_constraintHorizontal_bias="0.483"

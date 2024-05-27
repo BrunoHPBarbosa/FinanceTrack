@@ -1,12 +1,15 @@
 package com.hacksprint.financetrack
 
+import android.content.Context
 import androidx.room.Database
+import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(entities = [CategoryEntity::class, ExpenseEntity::class], version = 4)
-abstract class FinanceTrackDataBase : RoomDatabase(){
+abstract class FinanceTrackDataBase : RoomDatabase() {
 
     abstract fun getCategoryDao(): CategoryDao
 
     abstract fun getExpenseDao(): ExpenseDao
+
 }
