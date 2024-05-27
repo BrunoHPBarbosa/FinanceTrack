@@ -83,6 +83,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_home"
         android:layout_width="330dp"
+        android:maxHeight="50dp"
+        android:maxWidth="10dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btn_show_dielog"
@@ -98,21 +100,20 @@
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.518"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.928">
+        app:layout_constraintVertical_bias="0.936">
 
         <Button
-
-            android:gravity="center"
-            android:drawableLeft="@drawable/ic_home"
-            android:drawableTint="@color/white"
-            android:layout_marginStart="20dp"
             android:id="@+id/btn_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:background="@drawable/add_shape_list"
+            android:drawableLeft="@drawable/ic_home"
+            android:drawableTint="@color/white"
+            android:gravity="center"
             android:text="home"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -123,14 +124,14 @@
             app:layout_constraintVertical_bias="0.928" />
 
         <Button
-            android:gravity="center"
             android:id="@+id/btn_list"
-            android:drawableTint="@color/white"
-            android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:background="@drawable/add_shape_list"
+            android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
+            android:drawableTint="@color/white"
+            android:gravity="center"
             android:text="list"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -187,5 +188,6 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
