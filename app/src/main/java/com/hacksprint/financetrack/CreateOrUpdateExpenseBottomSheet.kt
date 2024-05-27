@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -133,39 +132,22 @@ class CreateOrUpdateExpenseBottomSheet(
                         date = date,
                         category = requireNotNull(expenseCategory),
                         iconResId = icons[iconResId]
-                        /*iconResId = listIconsAdapter.updateSelectedIconPosition(
-                            listIconsAdapter.selectedIconPosition
-                        ).toString()*/
+
                     )
 
                     if (expense == null) {
-                        onCreateClicked.invoke( expenseUiData
-                            /*ExpenseUiData(
-                                id = 0,
-                                description = name,
-                                amount = amount,
-                                date = date,
-                                category = requireNotNull(expenseCategory),
-                                iconResId = iconResId
-                            )*/
-                        )
+                        onCreateClicked.invoke(expenseUiData)
+
                         dismiss()
                         showMessages("Expense created")
 
                     } else {
-                        onUpdateClicked.invoke(expenseUiData
-                            /*ExpenseUiData(
-                                id = expense.id,
-                                description = name,
-                                amount = amount,
-                                date = date,
-                                category = requireNotNull(expenseCategory),
-                                iconResId = iconResId
-                            )*/
-                        )
+                        onUpdateClicked.invoke(expenseUiData)
+
                         dismiss()
                         showMessages("Expense updated")
                     }
+
                 } else {
                     showMessages("Fields are required")
                 }

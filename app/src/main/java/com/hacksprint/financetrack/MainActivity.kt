@@ -96,8 +96,6 @@ class MainActivity : AppCompatActivity() {
             showCreateUpdateExpenseBottomSheet(expense)
         }
 
-
-
         categoryAdapter.setOnLongClickListener { categoryToBeDeleted ->
             if(categoryToBeDeleted.name != "ALL") {
                 val title = this.getString(R.string.category_delete_title)
@@ -119,26 +117,24 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         categoryAdapter.setOnClickListener { selected ->
-            if (selected.name != "ALL") {
-                filterExpensesByCategoryName(selected.name)
+            filterExpensesByCategoryName(selected.name)
 
-            } else {
-
-                val categoryTemp = categories.map { item ->
-                    when {
-                        item.name == selected.name -> item.copy(isSelected = true)
-                        else -> item.copy(isSelected = false)
-                    }
+            val categoryTemp = categories.map { item ->
+                when {
+                    item.name == selected.name && item.isSelected -> item.copy(isSelected = true)
+                    item.name == selected.name && !item.isSelected -> item.copy(isSelected = true)
+                    item.name != selected.name && item.isSelected -> item.copy(isSelected = false)
+                    else -> item
                 }
+            }
 
+            categoryAdapter.submitList(categoryTemp)
+
+            if (selected.name == "ALL") {
                 GlobalScope.launch(Dispatchers.IO) {
                     getExpensesFromDatabase()
                 }
-
-                categoryAdapter.submitList(categoryTemp)
-
             }
         }
 
