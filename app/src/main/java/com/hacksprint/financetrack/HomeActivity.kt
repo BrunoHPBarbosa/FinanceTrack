@@ -3,6 +3,7 @@ package com.hacksprint.financetrack
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,12 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_layout)
 
+        val btnGrafic = findViewById<ImageView>(R.id.btn_grafic)
 
+        btnGrafic.setOnClickListener {
+            val intent = Intent(this, Chart::class.java)
+            startActivity(intent)
+        }
 
         val btnHome = findViewById<Button>(R.id.btn_list)
         btnHome.setOnClickListener {

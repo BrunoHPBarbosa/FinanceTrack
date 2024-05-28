@@ -14,7 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.hacksprint.financetrack.HomeActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -30,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private var expenses = listOf<ExpenseUiData>()
     private var categoriesEntity = listOf<CategoryEntity>()
     private lateinit var onDeleteClicked: (ExpenseUiData) -> Unit
-    private lateinit var ctnContent: LinearLayout
+    private lateinit var ctnContent: ImageView
 
     private val categoryAdapter = CategoryListAdapter()
     private val expenseAdapter by lazy {
@@ -69,10 +68,12 @@ class MainActivity : AppCompatActivity() {
         val rvCategory = findViewById<RecyclerView>(R.id.rv_categories)
         val rvExpense = findViewById<RecyclerView>(R.id.rv_expenses)
         val fabCreateExpense = findViewById<ImageView>(R.id.btn_add_expense)
-        val fabCreateCategory = findViewById<ImageView>(R.id.btn_add_category)
+        val fabCreateCategory = findViewById<ImageView>(R.id.btn_add_categorie)
+
 
         val deleteIcon = ContextCompat.getDrawable(this, R.drawable.ic_delete)!!
         val swipeBackground = ColorDrawable(Color.RED)
+
 
         fabCreateCategory.setOnClickListener {
             CreateCategoryBottomSheet(
@@ -84,20 +85,21 @@ class MainActivity : AppCompatActivity() {
 
                     insertCategory(categoryEntity)
                 }
-            ).show(supportFragmentManager, "create_category"
+            ).show(
+                supportFragmentManager, "create_category"
             )
         }
 
-      fabCreateExpense.setOnClickListener {
-             showCreateUpdateExpenseBottomSheet()
-         }
+        fabCreateExpense.setOnClickListener {
+            showCreateUpdateExpenseBottomSheet()
+        }
 
-        expenseAdapter.setOnClickListener {expense ->
+        expenseAdapter.setOnClickListener { expense ->
             showCreateUpdateExpenseBottomSheet(expense)
         }
 
         categoryAdapter.setOnLongClickListener { categoryToBeDeleted ->
-            if(categoryToBeDeleted.name != "ALL") {
+            if (categoryToBeDeleted.name != "ALL") {
                 val title = this.getString(R.string.category_delete_title)
                 val message = this.getString(R.string.category_delete_message)
                 val btnAction = this.getString(R.string.delete)
@@ -247,7 +249,8 @@ class MainActivity : AppCompatActivity() {
         )
         infoBottomSheet.show(
             supportFragmentManager,
-            "infoBottomSheet")
+            "infoBottomSheet"
+        )
     }
 
     private fun getCategoriesFromDatabase() {
@@ -261,17 +264,17 @@ class MainActivity : AppCompatActivity() {
         }
             .toMutableList()
 
-            val tempCategoryList = mutableListOf(
-                    CategoryUiData(
-                        name = "ALL",
-                        isSelected = true
-                    )
+        val tempCategoryList = mutableListOf(
+            CategoryUiData(
+                name = "ALL",
+                isSelected = true
             )
+        )
 
         tempCategoryList.addAll(categoriesUiData)
         GlobalScope.launch(Dispatchers.Main) {
-                categories = tempCategoryList
-                categoryAdapter.submitList(categories)
+            categories = tempCategoryList
+            categoryAdapter.submitList(categories)
         }
 
     }
@@ -303,21 +306,21 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun insertCategory(categoryEntity: CategoryEntity){
+    private fun insertCategory(categoryEntity: CategoryEntity) {
         GlobalScope.launch(Dispatchers.IO) {
             categoryDao.insert(categoryEntity)
             getCategoriesFromDatabase()
         }
     }
 
-    private fun insertExpense(expenseEntity: ExpenseEntity){
+    private fun insertExpense(expenseEntity: ExpenseEntity) {
         GlobalScope.launch(Dispatchers.IO) {
             expenseDao.insert(expenseEntity)
             getExpensesFromDatabase()
         }
     }
 
-    private fun updateExpense(expenseEntity: ExpenseEntity){
+    private fun updateExpense(expenseEntity: ExpenseEntity) {
         GlobalScope.launch(Dispatchers.IO) {
             expenseDao.update(expenseEntity)
             getExpensesFromDatabase()
@@ -341,7 +344,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun filterExpensesByCategoryName(categoryName: String){
+    private fun filterExpensesByCategoryName(categoryName: String) {
         GlobalScope.launch(Dispatchers.IO) {
             val expensesFromDb: List<ExpenseEntity> = expenseDao.getAllByCategoryName(categoryName)
             val expensesUiData = expensesFromDb.map {
@@ -366,8 +369,7 @@ class MainActivity : AppCompatActivity() {
         val createExpenseBottomSheet = CreateOrUpdateExpenseBottomSheet(
             expense = expenseUiData,
             categoryList = categoriesEntity,
-            onCreateClicked = {
-                    expenseToBeCreated ->
+            onCreateClicked = { expenseToBeCreated ->
                 val expenseEntityToBeInserted = ExpenseEntity(
                     amount = expenseToBeCreated.amount,
                     category = expenseToBeCreated.category,
@@ -378,9 +380,9 @@ class MainActivity : AppCompatActivity() {
 
                 )
                 insertExpense(expenseEntityToBeInserted)
+
             },
-            onUpdateClicked = {
-                    expenseToBeUpdated ->
+            onUpdateClicked = { expenseToBeUpdated ->
                 val expenseEntityToBeUpdated = ExpenseEntity(
                     id = expenseToBeUpdated.id,
                     amount = expenseToBeUpdated.amount,
@@ -397,7 +399,8 @@ class MainActivity : AppCompatActivity() {
         )
         createExpenseBottomSheet.show(
             supportFragmentManager,
-            "create_expense")
+            "create_expense"
+        )
     }
 
 }
