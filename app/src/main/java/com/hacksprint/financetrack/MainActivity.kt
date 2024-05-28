@@ -14,16 +14,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-import com.github.mikephil.charting.charts.BarChart
-import com.github.mikephil.charting.charts.PieChart
-import com.github.mikephil.charting.data.BarData
-import com.github.mikephil.charting.data.BarDataSet
-import com.github.mikephil.charting.data.BarEntry
-import com.github.mikephil.charting.data.PieData
-import com.github.mikephil.charting.data.PieDataSet
-import com.github.mikephil.charting.data.PieEntry
-import com.github.mikephil.charting.utils.ColorTemplate
-import com.hacksprint.financetrack.HomeActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -39,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     private var expenses = listOf<ExpenseUiData>()
     private var categoriesEntity = listOf<CategoryEntity>()
     private lateinit var onDeleteClicked: (ExpenseUiData) -> Unit
-    private lateinit var ctnContent: LinearLayout
+    private lateinit var ctnContent: ImageView
 
     private val categoryAdapter = CategoryListAdapter()
     private val expenseAdapter by lazy {
@@ -78,16 +68,13 @@ class MainActivity : AppCompatActivity() {
         val rvCategory = findViewById<RecyclerView>(R.id.rv_categories)
         val rvExpense = findViewById<RecyclerView>(R.id.rv_expenses)
         val fabCreateExpense = findViewById<ImageView>(R.id.btn_add_expense)
-        val fabCreateCategory = findViewById<ImageView>(R.id.btn_add_category)
-        val btnGrafic = findViewById<ImageView>(R.id.btn_grafic)
+        val fabCreateCategory = findViewById<ImageView>(R.id.btn_add_categorie)
+
 
         val deleteIcon = ContextCompat.getDrawable(this, R.drawable.ic_delete)!!
         val swipeBackground = ColorDrawable(Color.RED)
 
-btnGrafic.setOnClickListener {
-    val intent = Intent(this, Chart::class.java)
-    startActivity(intent)
-}
+
         fabCreateCategory.setOnClickListener {
             CreateCategoryBottomSheet(
                 onCreateClicked = { categoryName ->

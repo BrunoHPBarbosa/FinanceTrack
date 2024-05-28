@@ -7,46 +7,44 @@
     android:background="@drawable/background">
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/btn_show_dielog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_card_home_fragent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/btn_grafic"
+        android:layout_width="62dp"
+        android:layout_height="106dp"
+        android:background="@drawable/rect"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.886"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.227" />
+        app:layout_constraintHorizontal_bias="0.585"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"
+        app:layout_constraintVertical_bias="0.229" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/baseline_bar_chart_24"
+        android:backgroundTint="@color/blue"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_grafic"
+        app:layout_constraintEnd_toEndOf="@+id/btn_grafic"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@+id/btn_grafic"
+        app:layout_constraintTop_toTopOf="@+id/btn_grafic"
+        app:layout_constraintVertical_bias="0.20" />
 
     <TextView
-        android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="+"
-        android:textAlignment="center"
-        android:textColor="#C1D0F5"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_show_dielog"
-        app:layout_constraintEnd_toEndOf="@+id/btn_show_dielog"
-        app:layout_constraintStart_toStartOf="@+id/btn_show_dielog"
-        app:layout_constraintTop_toTopOf="@+id/btn_show_dielog"
-        app:layout_constraintVertical_bias="0.47" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="42dp"
-        android:layout_height="22dp"
-        android:text="Add Despesa"
-        android:textAlignment="center"
+        android:text="Grafic"
         android:textColor="@color/blue"
-        android:textSize="8dp"
+        android:textSize="12dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_show_dielog"
-        app:layout_constraintEnd_toEndOf="@+id/btn_show_dielog"
-        app:layout_constraintStart_toStartOf="@+id/btn_show_dielog"
-        app:layout_constraintTop_toTopOf="@+id/btn_show_dielog"
-        app:layout_constraintVertical_bias="0.849" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_grafic"
+        app:layout_constraintEnd_toEndOf="@+id/btn_grafic"
+        app:layout_constraintHorizontal_bias="0.50"
+        app:layout_constraintStart_toStartOf="@+id/btn_grafic"
+        app:layout_constraintTop_toTopOf="@+id/btn_grafic"
+        app:layout_constraintVertical_bias="0.777" />
 
     <TextView
         android:id="@+id/set_name_text"
@@ -56,7 +54,7 @@
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="28sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.167"
@@ -84,12 +82,10 @@
         android:id="@+id/rv_home"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
         android:maxWidth="10dp"
         android:maxHeight="50dp"
-        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
-        app:layout_constraintEnd_toEndOf="@+id/btn_show_dielog"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
         app:layout_constraintVertical_bias="0.129" />
@@ -153,8 +149,6 @@
         android:padding="4dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_show_dielog"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/set_name_text"
         app:layout_constraintTop_toBottomOf="@+id/set_name_text"
         app:layout_constraintVertical_bias="0.11">
