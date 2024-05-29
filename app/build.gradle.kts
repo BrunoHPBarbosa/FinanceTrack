@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("org.jetbrains.kotlin.kapt")
+    id ("kotlin-parcelize")
 }
 
 android {
@@ -50,6 +51,7 @@ dependencies {
     implementation ("androidx.core:core-splashscreen:1.0.1")
     implementation ("com.airbnb.android:lottie:6.1.0")
     implementation (libs.mpandroidchart)
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0")
 
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")

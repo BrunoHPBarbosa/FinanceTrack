@@ -11,6 +11,7 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
@@ -21,16 +22,18 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        val expenses:
+        var expenses:
                 List<ExpenseUiData> = listOf()
     }
+
 
     private var categories = listOf<CategoryUiData>()
     private var expenses = listOf<ExpenseUiData>()
     private var categoriesEntity = listOf<CategoryEntity>()
     private lateinit var onDeleteClicked: (ExpenseUiData) -> Unit
     private lateinit var ctnContent: ImageView
-
+    // chamei o view model
+    private lateinit var viewModel: ExpenseViewModel
     private val categoryAdapter = CategoryListAdapter()
     private val expenseAdapter by lazy {
         ExpenseListAdapter()
@@ -56,6 +59,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+
         val btnHome = findViewById<Button>(R.id.btn_home)
         btnHome.setOnClickListener {
             val intent = Intent(this, HomeActivity::class.java)
@@ -73,6 +78,22 @@ class MainActivity : AppCompatActivity() {
 
         val deleteIcon = ContextCompat.getDrawable(this, R.drawable.ic_delete)!!
         val swipeBackground = ColorDrawable(Color.RED)
+
+// aqui inicia o view model usando o viewmodel provider
+        viewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
+
+// aqui e um live data , ele observa as lista do expense , se mudar a lista tbm mudara na outra tela
+        viewModel.expenses.observe(this) { expenses ->
+            expenseAdapter.submitList(expenses)
+        }
+
+        viewModel.categories.observe(this) { categories ->
+            categoryAdapter.submitList(categories)
+        }
+
+        // Carregar dados da  criação
+        viewModel.loadExpenses(expenseDao)
+        viewModel.loadCategories(categoryDao)
 
 
         fabCreateCategory.setOnClickListener {
