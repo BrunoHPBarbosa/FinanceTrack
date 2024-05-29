@@ -12,9 +12,12 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 
+
+
 class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: ExpenseViewModel
     private val expenseAdapter by lazy { ExpenseListAdapter() }
+    private lateinit var totalExpensesTextView: TextView
 
     // chama novamente o banco de dados
     private val db by lazy {
@@ -31,10 +34,20 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.home_layout)
 
+        totalExpensesTextView = findViewById(R.id.valor_despesas)
+        viewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
+
+
+        viewModel.totalExpenses.observe(this) { total ->
+            totalExpensesTextView.text = total.toString()
+        }
+
+        viewModel.loadTotalExpenses(expenseDao)
+
 
         val btnGrafic = findViewById<ImageView>(R.id.btn_grafic)
         btnGrafic.setOnClickListener {
-            val intent = Intent(this, Chart::class.java)
+        val intent = Intent(this, Chart::class.java)
             startActivity(intent)
         }
 
