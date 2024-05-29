@@ -39,7 +39,7 @@
         <TextView
             android:layout_width="224dp"
             android:layout_height="36dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="20dp"
             android:text="Tenha um melhor controle de seus gastos , simples rapido e facil"
             android:textAlignment="center"
             android:textColor="@color/black"
