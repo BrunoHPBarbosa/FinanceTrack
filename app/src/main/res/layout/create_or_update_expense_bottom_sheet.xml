@@ -52,91 +52,109 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_expense_amount"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/add_shape_list"
-        android:layout_marginEnd="190dp"
-        android:layout_marginBottom="20dp"
-        android:textColorHint="@color/black"
+        android:layout_marginTop="250dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal"
         app:layout_constraintBottom_toTopOf="@+id/btn_expense_create"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/ti_expense_name"
-        app:layout_constraintTop_toBottomOf="@+id/ti_expense_name"
-        app:layout_constraintVertical_bias="0.017">
+        app:layout_constraintEnd_toEndOf="@+id/category_spinner"
+        app:layout_constraintStart_toStartOf="@+id/category_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/category_spinner">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_expense_amount"
-            android:layout_width="180dp"
-            android:layout_height="51dp"
-            android:background="@drawable/add_shape_list"
-            android:backgroundTint="@color/blue"
-            android:hint="Amount"
-            android:inputType="numberDecimal"
-            android:textColor="@color/black"
-            android:textSize="13dp" />
+        <androidx.constraintlayout.widget.ConstraintLayout
 
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_expense_name"
-        android:background="@drawable/add_shape_list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/recyclerListIcons"
-        app:layout_constraintStart_toStartOf="@+id/recyclerListIcons"
-        app:layout_constraintTop_toBottomOf="@+id/recyclerListIcons">
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_expense_amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="190dp"
+                android:background="@drawable/add_shape_list"
+                android:textColorHint="@color/black"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/ti_expense_name"
+                app:layout_constraintTop_toBottomOf="@+id/ti_expense_name"
+                app:layout_constraintVertical_bias="0.017">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_expense_name"
-            android:layout_width="342dp"
-            android:layout_height="56dp"
-            android:background="@drawable/add_shape_list"
-            android:backgroundTint="@color/blue"
-            android:hint="Expense Name: e.g. Rent."
-            android:inputType="text"
-            android:textColor="@color/black"
-            android:textSize="13dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_expense_amount"
+                    android:layout_width="180dp"
+                    android:layout_height="51dp"
+                    android:background="@drawable/add_shape_list"
+                    android:backgroundTint="@color/blue"
+                    android:hint="Amount"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_expense_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/add_shape_list"
+                android:textColorHint="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linear">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_expense_name"
+                    android:layout_width="342dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/add_shape_list"
+                    android:backgroundTint="@color/blue"
+                    android:hint="Expense Name: e.g. Rent."
+                    android:inputType="text"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/ti_expense_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:background="@drawable/add_shape_list"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="10dp"
-        android:textColorHint="@color/black"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ti_expense_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/add_shape_list"
+                android:textColorHint="@color/black"
 
-        app:layout_constraintEnd_toEndOf="@+id/recyclerListIcons"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toEndOf="@+id/ti_expense_amount"
-        app:layout_constraintTop_toBottomOf="@+id/ti_expense_name"
-        app:layout_constraintVertical_bias="0.008">
+                app:layout_constraintBottom_toBottomOf="parent"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_expense_date"
-            android:layout_width="150dp"
-            android:layout_height="53dp"
-            android:background="@drawable/add_shape_list"
-            android:backgroundTint="@color/blue"
-            android:clickable="true"
-            android:focusable="false"
-            android:hint="Date"
-            android:inputType="date"
-            android:maxLength="10"
-            android:textColor="@color/black"
-            android:textSize="13dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+                app:layout_constraintEnd_toEndOf="@+id/ti_expense_name"
+                app:layout_constraintHorizontal_bias="0.516"
+                app:layout_constraintStart_toEndOf="@+id/ti_expense_amount"
+                app:layout_constraintTop_toBottomOf="@+id/ti_expense_name"
+                app:layout_constraintVertical_bias="0.008">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_expense_date"
+                    android:layout_width="150dp"
+                    android:layout_height="53dp"
+                    android:background="@drawable/add_shape_list"
+                    android:backgroundTint="@color/blue"
+                    android:clickable="true"
+                    android:focusable="false"
+                    android:hint="Date"
+                    android:inputType="date"
+                    android:maxLength="10"
+                    android:textColor="@color/black"
+                    android:textSize="13dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btn_expense_create"
@@ -145,14 +163,15 @@
         android:backgroundTint="#2F2F2F"
         android:gravity="center"
         android:text="Create"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
         android:textColor="@color/white"
         android:textSize="16sp"
-        android:layout_marginTop="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/recyclerListIcons"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="@id/recyclerListIcons"
-        app:layout_constraintTop_toBottomOf="@+id/ti_expense_date"
+        app:layout_constraintTop_toBottomOf="@+id/linear"
         app:layout_constraintVertical_bias="1.0" />
 
     <Spinner
