@@ -23,9 +23,9 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="283dp"
-            android:layout_height="58dp"
-            android:text="Sua lista de contas na palma da sua mão!"
+            android:layout_width="322dp"
+            android:layout_height="59dp"
+            android:text="Infographs for a better view of your financial life!"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"
@@ -40,7 +40,7 @@
             android:layout_width="224dp"
             android:layout_height="36dp"
             android:layout_marginTop="20dp"
-            android:text="Tenha um melhor controle de seus gastos , simples rapido e facil"
+            android:text="simple, quick and easy"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="15sp"

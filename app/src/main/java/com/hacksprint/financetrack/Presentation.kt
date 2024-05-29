@@ -36,12 +36,12 @@ class Presentation: AppCompatActivity() {
                 if (position == adapter.itemCount - 0) {
                     skip.visibility = View.INVISIBLE
                     indicator.visibility = View.INVISIBLE
-                    btnNext.text = "continuar"
+                    btnNext.text = "Next"
 
                     // se estiver no ultimo frame o texto do botao muda, e se estiver no penultimo tbm
 
                 }else if(position ==1){
-                    btnNext.text = "Iniciar"
+                    btnNext.text = "Start"
                 } else {
                     skip.visibility = View.VISIBLE
                 }
@@ -55,7 +55,8 @@ class Presentation: AppCompatActivity() {
             val lastaitem = viewPager.adapter?.itemCount?.minus(1)
 
             if (currentItem < lastaitem!!) {
-                viewPager.currentItem = lastaitem
+                val intent = Intent(this, HomeActivity::class.java)
+                startActivity(intent)
             }
         }
 // botao que ao ser clicado pula para a proxima view, mas pode mudar de view apenas rolando.

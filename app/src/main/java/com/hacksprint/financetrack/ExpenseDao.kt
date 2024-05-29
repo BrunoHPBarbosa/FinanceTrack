@@ -31,6 +31,6 @@ interface ExpenseDao {
     @Delete
     fun deleteAll(expenseEntity: List<ExpenseEntity>)
 
-    @Query("SELECT SUM(amount) FROM expenseentity")
+    @Query("SELECT COALESCE(SUM(amount), 0) FROM expenseentity")
     suspend fun getSumOfExpenses(): Double
 }
