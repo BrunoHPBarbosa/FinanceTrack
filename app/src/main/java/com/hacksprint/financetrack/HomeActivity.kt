@@ -2,6 +2,7 @@ package com.hacksprint.financetrack
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -15,7 +16,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var viewModel: ExpenseViewModel
     private val expenseAdapter by lazy { ExpenseListAdapter() }
 
-// chama novamente o banco de dados
+    // chama novamente o banco de dados
     private val db by lazy {
         Room.databaseBuilder(
             applicationContext,
@@ -45,19 +46,25 @@ class HomeActivity : AppCompatActivity() {
 
         val recyclerViewHome: RecyclerView = findViewById(R.id.rv_home)
         recyclerViewHome.layoutManager = GridLayoutManager(this, 2)
-
+        val vazioImg: ImageView = findViewById(R.id.vazio_home)
 // daqui , o view model observa as mudanças na lista e repassa para o adpter da home, passa no max 6 itens
         viewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
 
         viewModel.expenses.observe(this) { expenses ->
+            if (expenses.isNullOrEmpty()) {
+                vazioImg.visibility = View.VISIBLE
 
-            val firstSixExpenses = expenses?.take(6) ?: emptyList()
-            val adapter = AdapterRvHome(firstSixExpenses)
-            recyclerViewHome.adapter = adapter
+            } else {
+                vazioImg.visibility = View.GONE
+
+
+                val firstSixExpenses = expenses?.take(6) ?: emptyList()
+                val adapter = AdapterRvHome(firstSixExpenses)
+                recyclerViewHome.adapter = adapter
+            }
+        }
+            // Carregar despesas ao iniciar a HomeActivity
+            viewModel.loadExpenses(expenseDao)
         }
 
-        // Carregar despesas ao iniciar a HomeActivity
-        viewModel.loadExpenses(expenseDao)
     }
-
-}
