@@ -120,32 +120,7 @@ class CreateOrUpdateExpenseBottomSheet(
             spinner.setSelection(index)
 
         }
-        edtExpenseAmount.addTextChangedListener(object : TextWatcher {
-            private var current = ""
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
-
-            override fun afterTextChanged(s: Editable?) {
-                if (s.toString() != current) {
-                    edtExpenseAmount.removeTextChangedListener(this)
-
-                    val cleanString = s.toString().replace("[€,.]".toRegex(), "")
-                    val parsed = cleanString.toDoubleOrNull()
-                    val formatted = if (parsed != null) {
-                        NumberFormat.getCurrencyInstance(Locale("pt", "PT")).format(parsed / 100)
-                    } else {
-                        ""
-                    }
-
-                    current = formatted
-                    edtExpenseAmount.setText(formatted)
-                    edtExpenseAmount.setSelection(formatted.length)
-
-                    edtExpenseAmount.addTextChangedListener(this)
-                }
-            }
-        })
 
 
         btnCreateOrUpdate.setOnClickListener {
