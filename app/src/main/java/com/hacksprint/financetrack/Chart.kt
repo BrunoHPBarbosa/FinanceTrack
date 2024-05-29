@@ -69,7 +69,7 @@ class Chart : AppCompatActivity() {
             pieEntries.add(PieEntry(expense.amount.toFloat(), expense.description))
         }
 
-        val pieDataSet = PieDataSet(pieEntries, "Expenses")
+        val pieDataSet = PieDataSet(pieEntries, "")
         pieDataSet.colors = ColorTemplate.COLORFUL_COLORS.toList()
         pieDataSet.valueTextSize = 10f
         val pieData = PieData(pieDataSet)
@@ -78,7 +78,7 @@ class Chart : AppCompatActivity() {
 
         // Personalizações
         pieChart.description.isEnabled = false
-        pieChart.setCenterText("Meu Grafico de pizza")
+        pieChart.setCenterText("Expenses")
         pieChart.setCenterTextSize(16f)
         pieChart.setCenterTextColor(Color.BLACK)
         pieChart.legend.isEnabled = true

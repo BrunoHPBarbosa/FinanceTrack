@@ -253,7 +253,6 @@ class MainActivity : AppCompatActivity() {
             getExpensesFromDatabase()
 
         }
-
     }
 
     private fun showInfoDialog(
@@ -313,7 +312,6 @@ class MainActivity : AppCompatActivity() {
                 dueDate = it.dueDate
             )
         }
-
 
         GlobalScope.launch(Dispatchers.Main) {
             expenses = expensesUiData
@@ -423,5 +421,4 @@ class MainActivity : AppCompatActivity() {
             "create_expense"
         )
     }
-
 }

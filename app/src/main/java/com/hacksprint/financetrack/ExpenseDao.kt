@@ -30,4 +30,7 @@ interface ExpenseDao {
 
     @Delete
     fun deleteAll(expenseEntity: List<ExpenseEntity>)
+
+    @Query("SELECT SUM(amount) FROM expenseentity")
+    suspend fun getSumOfExpenses(): Double
 }
