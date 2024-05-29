@@ -1,6 +1,5 @@
 package com.hacksprint.financetrack
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -46,27 +45,8 @@ fun loadExpenses(expenseDao: ExpenseDao) {
                 )
             }
         }
-       /* _expenses.value = if (expenses.isNotEmpty()) expenses else emptyList()*/
     }
 }
-
-    /*fun loadExpenses(expenseDao: ExpenseDao) {
-        viewModelScope.launch {
-            _expenses.value = withContext(Dispatchers.IO) {
-                expenseDao.getAll().map { expense ->
-                    ExpenseUiData(
-                        id = expense.id,
-                        amount = expense.amount,
-                        description = expense.description,
-                        category = expense.category,
-                        date = expense.date,
-                        iconResId = expense.iconResId,
-                        dueDate = expense.dueDate
-                    )
-                }
-            }
-        }
-    }*/
 
     fun loadCategories(categoryDao: CategoryDao) {
         viewModelScope.launch {

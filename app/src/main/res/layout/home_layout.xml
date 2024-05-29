@@ -67,7 +67,7 @@
         android:textAlignment="center"
         android:textColor="@color/blue"
         android:textSize="28sp"
-        android:textStyle="normal"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.167"
@@ -126,7 +126,8 @@
             android:drawableLeft="@drawable/ic_home"
             android:drawableTint="@color/white"
             android:gravity="center"
-            android:text="home"
+            android:text="Home"
+            android:textStyle="bold"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -144,7 +145,8 @@
             android:drawableLeft="@drawable/baseline_account_balance_wallet_24"
             android:drawableTint="@color/white"
             android:gravity="center"
-            android:text="list"
+            android:text="List"
+            android:textStyle="bold"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +177,7 @@
             android:text="Total monthly expenses"
             android:textColor="@color/black"
             android:textSize="11sp"
-            android:textStyle="normal" />
+            android:textStyle="bold" />
 
         <TextView
 
@@ -183,7 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="50dp"
-            android:text="€"
+            android:text=""
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />

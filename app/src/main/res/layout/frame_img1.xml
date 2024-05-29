@@ -23,9 +23,9 @@
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="283dp"
-            android:layout_height="58dp"
-            android:text="Control your expenses with ease"
+            android:layout_width="285dp"
+            android:layout_height="71dp"
+            android:text="Control your expenses more easily"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="24sp"

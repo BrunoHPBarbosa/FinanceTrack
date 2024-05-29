@@ -7,7 +7,6 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -26,7 +25,6 @@ class MainActivity : AppCompatActivity() {
                 List<ExpenseUiData> = listOf()
     }
 
-
     private var categories = listOf<CategoryUiData>()
     private var expenses = listOf<ExpenseUiData>()
     private var categoriesEntity = listOf<CategoryEntity>()
@@ -44,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             applicationContext,
             FinanceTrackDataBase::class.java,
             "finance_track_db"
-        ).fallbackToDestructiveMigration().build()
+        ).build()
     }
 
     private val categoryDao by lazy {
