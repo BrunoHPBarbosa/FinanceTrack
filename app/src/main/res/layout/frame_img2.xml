@@ -13,7 +13,7 @@
             android:layout_width="344dp"
             android:layout_height="316dp"
             android:layout_gravity="center"
-            android:src="@drawable/frag_img_4"
+            android:src="@drawable/frag_img_3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.761"
