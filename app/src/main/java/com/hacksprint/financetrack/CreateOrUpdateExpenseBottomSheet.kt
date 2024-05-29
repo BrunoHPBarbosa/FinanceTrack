@@ -2,8 +2,6 @@ package com.hacksprint.financetrack
 
 import android.app.DatePickerDialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,9 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
-import java.text.NumberFormat
 import java.util.Calendar
-import java.util.Locale
 
 class CreateOrUpdateExpenseBottomSheet(
     private val categoryList: List<CategoryEntity>,
@@ -121,17 +117,20 @@ class CreateOrUpdateExpenseBottomSheet(
 
         }
 
-
-
         btnCreateOrUpdate.setOnClickListener {
             val name = edtExpenseName.text.toString().trim()
             val amount = edtExpenseAmount.text.toString().trim()
             val date = edtExpenseDate.text.toString().trim()
 
-            if(expenseCategory != "Select a category" && name.isNotEmpty()
-                && amount.isNotEmpty()
-                && date.isNotEmpty()) {
-
+            if(expenseCategory == "Select a category") {
+                showMessages("Category is required")
+            } else if(name.isEmpty()) {
+                showMessages("Name is required")
+            } else if(amount.isEmpty()) {
+                showMessages("Amount is required")
+            } else if(date.isEmpty()) {
+                showMessages("Date is required")
+            } else {
                 val iconResId = listIconsAdapter.selectedIconPosition
                 if (iconResId != null && iconResId < icons.size) {
                     val expenseUiData = ExpenseUiData(
@@ -142,25 +141,19 @@ class CreateOrUpdateExpenseBottomSheet(
                         category = requireNotNull(expenseCategory),
                         iconResId = icons[iconResId],
                         dueDate = date
-
                     )
 
                     if (expense == null) {
                         onCreateClicked.invoke(expenseUiData)
-
                         dismiss()
                         showMessages("Expense created")
-
                     } else {
                         onUpdateClicked.invoke(expenseUiData)
-
                         dismiss()
                         showMessages("Expense updated")
                     }
-
                 } else {
-
-                    showMessages("Fields are required")
+                    showMessages("Icon is required")
                 }
             }
         }

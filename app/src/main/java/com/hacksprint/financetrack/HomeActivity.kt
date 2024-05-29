@@ -11,7 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
-
+import java.text.NumberFormat
+import java.util.Locale
 
 
 class HomeActivity : AppCompatActivity() {
@@ -25,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
             applicationContext,
             FinanceTrackDataBase::class.java,
             "finance_track_db"
-        ).fallbackToDestructiveMigration().build()
+        ).build()
     }
 
     private val expenseDao by lazy { db.getExpenseDao() }
@@ -37,9 +38,9 @@ class HomeActivity : AppCompatActivity() {
         totalExpensesTextView = findViewById(R.id.valor_despesas)
         viewModel = ViewModelProvider(this).get(ExpenseViewModel::class.java)
 
-
         viewModel.totalExpenses.observe(this) { total ->
-            totalExpensesTextView.text = total.toString()
+            val format = NumberFormat.getCurrencyInstance(Locale.ITALY)
+            totalExpensesTextView.text = format.format(total)
         }
 
         viewModel.loadTotalExpenses(expenseDao)

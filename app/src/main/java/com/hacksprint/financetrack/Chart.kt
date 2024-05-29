@@ -28,7 +28,7 @@ class Chart : AppCompatActivity() {
             applicationContext,
             FinanceTrackDataBase::class.java,
             "finance_track_db"
-        ).fallbackToDestructiveMigration().build()
+        ).build()
     }
 
     private val expenseDao by lazy { db.getExpenseDao() }
