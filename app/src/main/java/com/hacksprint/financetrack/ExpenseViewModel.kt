@@ -46,6 +46,7 @@ fun loadExpenses(expenseDao: ExpenseDao) {
                 )
             }
         }
+       /* _expenses.value = if (expenses.isNotEmpty()) expenses else emptyList()*/
     }
 }
 
