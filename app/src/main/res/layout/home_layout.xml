@@ -95,7 +95,7 @@
         android:id="@+id/rv_home"
         android:layout_width="330dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="30dp"
         android:layout_marginTop="10dp"
         android:maxWidth="10dp"
         android:maxHeight="50dp"

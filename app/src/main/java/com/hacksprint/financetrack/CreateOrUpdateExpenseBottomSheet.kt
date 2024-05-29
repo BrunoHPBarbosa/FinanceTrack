@@ -2,6 +2,8 @@ package com.hacksprint.financetrack
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,7 +18,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
+import java.text.NumberFormat
 import java.util.Calendar
+import java.util.Locale
 
 class CreateOrUpdateExpenseBottomSheet(
     private val categoryList: List<CategoryEntity>,
@@ -116,6 +120,33 @@ class CreateOrUpdateExpenseBottomSheet(
             spinner.setSelection(index)
 
         }
+        edtExpenseAmount.addTextChangedListener(object : TextWatcher {
+            private var current = ""
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s.toString() != current) {
+                    edtExpenseAmount.removeTextChangedListener(this)
+
+                    val cleanString = s.toString().replace("[€,.]".toRegex(), "")
+                    val parsed = cleanString.toDoubleOrNull()
+                    val formatted = if (parsed != null) {
+                        NumberFormat.getCurrencyInstance(Locale("pt", "PT")).format(parsed / 100)
+                    } else {
+                        ""
+                    }
+
+                    current = formatted
+                    edtExpenseAmount.setText(formatted)
+                    edtExpenseAmount.setSelection(formatted.length)
+
+                    edtExpenseAmount.addTextChangedListener(this)
+                }
+            }
+        })
+
 
         btnCreateOrUpdate.setOnClickListener {
             val name = edtExpenseName.text.toString().trim()
