@@ -2,10 +2,13 @@
 
 
 
-By Raphael and Bruno![image001](https://github.com/BrunoHPBarbosa/FinanceTrack/assets/141725324/58b9bbed-7fd6-44ec-a46e-c3e27468c77a)
+By Raphael and Bruno!
+![financetrack_github](https://github.com/BrunoHPBarbosa/FinanceTrack/assets/141725324/c6dc433e-246c-4be2-bc1e-5ea372204e97)
 
 
-</div>
+
+
+
 
 
 # FinanceTrack
