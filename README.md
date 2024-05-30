@@ -1,8 +1,10 @@
-<div align="center">![image001](https://github.com/BrunoHPBarbosa/FinanceTrack/assets/141725324/a37a84c5-aec1-403a-ad7e-635cfb65c4f5)
+<div align="center">
 
 
 
-By Raphael and Bruno
+By Raphael and Bruno![image001](https://github.com/BrunoHPBarbosa/FinanceTrack/assets/141725324/58b9bbed-7fd6-44ec-a46e-c3e27468c77a)
+
+
 </div>
 
 
